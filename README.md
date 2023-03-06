@@ -3,7 +3,3 @@
 ```
 Today I Learned
 ```
-
-```
-today
-```
