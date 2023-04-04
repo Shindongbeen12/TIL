@@ -1,9 +1,15 @@
 ## **최신날짜 : 4.4**
+<hr>
+
 ### **구현 코드**
 - [**TouchCode**](#touchcode--터치보스-체력감소골드-증가각종-텍스트-출력)
 - [**UpgradeWaepon**](#upgradewaepon--강화를-누를-시-무기-변경-및-각종-설정)
 - [**Changeimg_Boss**](#changeimg_boss--보스-체력-소진-시-다음-보스로-이미지-변경)
 - [**changeimg_Waepon**](#changeimg_waepon--강화버튼-누를-시-무기-변경강화-버튼과-연동)
+<hr>
+
+### **추후 구현 목록**
+-**도박 기능**
 <hr>
 
 - #### **TouchCode : 터치,보스 체력감소,골드 증가,강화 시 돈 감소,각종 텍스트 출력**
