@@ -31,10 +31,12 @@
     public int NowDamage; //데미지 선언
     
     public int NowWaepon; //돈 소비를 위한 선언
-    
+    public int HowMoney;
     //무기 공격력과,보스 HP를 표시하기 위한 게임오브젝트 선언
     GameObject ATK;
     GameObject HP;
+    //강화필요골드_텍스트를 나타나기 위한 변수 선언
+    GameObject TextGold;
     
 
     
@@ -44,51 +46,51 @@
         //강화 버튼을 누를 시 Attack이라는 변수에 UpgradeWaepon 코드 내용을 불러온다.
 
         //데미지를 실시간으로 출력해준다.
-        GameObject obj = GameObject.Find ("UpgradeyelloButton");
+        GameObject obj = GameObject.Find ("UpgraderButton");
 		if (obj != null)
 			Attack = obj.GetComponent<UpgradeWaepon>();
-        NowDamage = Attack.WaeponDamage + 1;
+        NowDamage = Attack.WaeponDamage;
         
         
-        
-
-        //보스 레벨 및 체력 설정 조건문
-
-        //보스1을 잡았을 시 실행되는 조건문
-        if(Level == 1 && Health <= NowDamage){
-            Money += 10; //돈 증가
-            Level += 1; //레벨 증가
-            Health = 150 + NowDamage; //체력 설정
-            
-    
-        }
-        
-        if(Level == 2 && Health <= NowDamage){
-            Money += 30;
-            Level += 1;
-            Health = 300 + NowDamage;
-        }
-        if(Level == 3 && Health <= NowDamage){
-            Money += 50;
-            Level += 1;
-            Health = 450 + + NowDamage;
-        }
-        if(Level == 4 && Health <= NowDamage){
-            Money += 80;
-            Level += 1;
-            Health = 500 + NowDamage;
-        }
-        if(Level == 5 && Health <= NowDamage){
-            Money += 100;
-            Level += 1;
-            Health = 550 + NowDamage;
-        }
-
         //터치 시 UpgradeWaepon코드에 있는 무기 데미지를 가져와 체력을 닳게 한다.
-        Health -= Attack.WaeponDamage + 1; 
+        Health -= Attack.WaeponDamage; 
         
         //무기데미지에 맞게 돈을 String형태로 출력하게 한다.
-        Money += Attack.WaeponDamage + 1;
+        Money += Attack.WaeponDamage;
+        //보스 레벨 및 체력 설정 조건문
+        
+
+        //보스1을 잡았을 시 실행되는 조건문
+        if(Level == 1 && Health <= 0){
+            Money += 10; //돈 증가
+            Level += 1; //레벨 증가
+            Health = 150; //체력 설정
+            
+    
+        } 
+        if(Level == 2 && Health <= 0){
+            Money += 30;
+            Level += 1;
+            Health = 300;
+        }
+        if(Level == 3 && Health <= 0){
+            Money += 50;
+            Level += 1;
+            Health = 450;
+        }
+        if(Level == 4 && Health <= 0){
+            Money += 80;
+            Level += 1;
+            Health = 500;
+        }
+        if(Level == 5 && Health <= 0){
+            Money += 100;
+            Level += 1;
+            Health = 550;
+        }
+        
+
+        
         
         
 
@@ -102,6 +104,7 @@
     {
         
         
+        
 
         
     }
@@ -110,38 +113,45 @@
     void Update()
     {
         //데미지를 실시간으로 출력해준다.
-        GameObject obj = GameObject.Find ("UpgradeyelloButton");
+        GameObject obj = GameObject.Find ("UpgraderButton");
 		if (obj != null)
 			Attack = obj.GetComponent<UpgradeWaepon>();
-        NowDamage = Attack.WaeponDamage + 1;
+        NowDamage = Attack.WaeponDamage;
         
         //UpgradeWapeon HWM(현재 무기 정보)값을 가져온다.
         NowWaepon = Attack.HWM;
-        
+        if(NowWaepon != 2 && NowWaepon != 3 && NowWaepon != 4 && NowWaepon != 5 && NowWaepon != 6){
+            HowMoney = 30;
+        }
         //무기 강화 시 감소되는 돈 조건문
         if(NowWaepon== 2 && Attack.WLevel == 2){
             Money -= 30;
+            HowMoney = 40;
             Attack.WLevel = 0;
         }
 
         if(NowWaepon== 3 && Attack.WLevel == 3){
             Money -= 40;
+            HowMoney = 50;
             Attack.WLevel = 0;
         }
         if(NowWaepon== 4 && Attack.WLevel == 4){
             Money -= 50;
+            HowMoney = 60;
             Attack.WLevel = 0;
         }
         if(NowWaepon== 5 && Attack.WLevel == 5){
             Money -= 60;
+            HowMoney = 70;
             Attack.WLevel = 0;
         }
         if(NowWaepon== 6 && Attack.WLevel == 6){
             Money -= 70;
+            HowMoney = 80;
             Attack.WLevel = 0;
         }
         
-        this.Gold = GameObject.Find("Money_number"); //소유금액 실시간 출력
+        this.Gold = GameObject.Find("HMT"); //소유금액 실시간 출력
         this.Gold.GetComponent<Text>().text = Money.ToString();
 
         this.ATK = GameObject.Find("Atk");//공격력 실시간 출력
@@ -149,9 +159,19 @@
 
         this.HP = GameObject.Find("Health");//보스 HP 실시간 출력
         this.HP.GetComponent<Text>().text = "BOSS_HP:" + Health.ToString();
+        //강화금액을 실시간으로 출력
+        this.TextGold = GameObject.Find("MMoney");
+        this.TextGold.GetComponent<Text>().text = "Upgrade_Money:" + HowMoney.ToString();
+
+        
+     
+        
         
     }
     }
+
+
+
     ``` 
 
 - #### **UpgradeWaepon : 강화를 누를 시 무기 변경 및 각종 설정**
