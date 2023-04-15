@@ -232,11 +232,13 @@
                 Upgrade = 100; //초기 강화확률 나타내기
                 HowMoney = 30; //강화 금액
                 HowM = "골드가 부족합니다.";
+                
             }
             //LV2->3
             if(WaeponLevel == 2){
                 HowMoney = 40; //강화 금액
                 HowM = "골드가 부족합니다.";
+                
             }
             //LV3->4
             if(WaeponLevel == 3){
@@ -267,7 +269,7 @@
         {
             
             if(UpgradeValue > 0){
-                WaeponDamage += 4;
+                WaeponDamage = 5;
                 Debug.Log("2단계 무기 강화 성공 현재 데미지:5");
                 Upgrade = 95;//강화활률
                 WLevel = 2;//현재 무기 레벨
@@ -285,7 +287,7 @@
         {
             
             if(UpgradeValue > 5){
-                WaeponDamage = 9;
+                WaeponDamage = 10;
                 Debug.Log("3단계 무기 강화 성공! 현재 데미지:10");
                 Upgrade = 90;
                 WLevel = 3;
@@ -306,7 +308,7 @@
         {
             
             if(UpgradeValue > 10){
-                WaeponDamage = 14;
+                WaeponDamage = 15;
                 Debug.Log("4단계 무기 강화 성공! 현재 데미지:15");
                 Upgrade = 85;
                 
@@ -328,7 +330,7 @@
         {
             
             if(UpgradeValue > 15){
-                WaeponDamage = 19;
+                WaeponDamage = 20;
                 Debug.Log("5단계 무기 강화 성공! 현재 데미지:20");
                 Upgrade = 80;
                 
@@ -352,7 +354,7 @@
         {
             
             if(UpgradeValue > 20){
-                WaeponDamage = 24;
+                WaeponDamage = 25;
                 Debug.Log("6단계 무기 강화 성공! 현재 데미지:25");
                 Upgrade = 75;
                 
@@ -376,17 +378,16 @@
         
 
         //오브젝트인 강화 성공 확률(Upgrade_number)를 실시간으로 변화 시켜준다.
-        this.Index = GameObject.Find("Upgrade_number");
+        this.Index = GameObject.Find("HUTT");
         this.Index.GetComponent<Text>().text = Upgrade.ToString() + "%";
         //무기레벨을 실시간으로 출력
         this.TextLevel = GameObject.Find("Level");
         this.TextLevel.GetComponent<Text>().text = "Waepons_LV:" + WaeponLevel.ToString();
-        //강화금액을 실시간으로 출력
-        this.TextGold = GameObject.Find("Money");
-        this.TextGold.GetComponent<Text>().text = "Upgrade_Money:" + HowMoney.ToString();
+        
+        
         //강화여부를 실시간으로 출력
         this.TextHow = GameObject.Find("How");
-        this.TextHow.GetComponent<Text>().text = HowM;  
+        this.TextHow.GetComponent<Text>().text = HowM;
          
         
        
@@ -415,6 +416,7 @@
         
     }
     }
+
 
     ```
 
