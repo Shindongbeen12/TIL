@@ -1,6 +1,6 @@
 # TIL
 
 ```
-.
+
 Today I Learned
 ```
