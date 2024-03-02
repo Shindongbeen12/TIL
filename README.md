@@ -1,5 +1,5 @@
 # TIL
-ㅏㅡㅣㄴㄸㄴ
+ㅏㅡㅣ
 ```
 
 Today I Learned
