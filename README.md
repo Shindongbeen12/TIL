@@ -1,5 +1,5 @@
 # TIL
-qw
+q
 ```
 Today I Learned
 ```
