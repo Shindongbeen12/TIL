@@ -1,5 +1,5 @@
 # TIL
-123
+12
 ```
 Today I Learned
 ```
